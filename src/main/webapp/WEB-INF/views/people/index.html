@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Index</title>
+</head>
+<body>
+<table class="table">
+    <thead>
+    <tr class="table-primary">
+        <th scope="col">#</th>
+        <th scope="col">Name</th>
+        <th scope="col">Position</th>
+        <th scope="col">Admin</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr th:each="person : ${people}">
+        <th scope="row" th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getId()}">1</th>
+        <td><a th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getName()}">Name</a></td>
+        <td th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getPosition()}">Position</td>
+        <td th:href="@{/people/{id}(id=${person.getId()})}" th:text="${person.getAdmin()}">Admin</td>
+    </tr>
+    </tbody>
+</table>
+<div class="d-grid gap-2 d-md-flex justify-content-center">
+    <a href="/people/new" class="mx-5 my-3">Create new person</a>
+    <a href="/admin" class="mx-5 my-3">Set new admin</a>
+</div>
+</body>
+</html>

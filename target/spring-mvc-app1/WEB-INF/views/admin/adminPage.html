@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <link href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css" rel="stylesheet"
+          integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <title>Admin Page</title>
+</head>
+<body>
+<div style="display: flex; justify-content: center; align-items: center; width: 100%; height: 70vh;
+flex-direction: column">
+    <h1 class="my-5">Set admin</h1>
+    <form th:method="PATCH" th:action="@{/admin/add}">
+        <select class="minimal" th:object="${person}" th:field="*{id}" id="person" style="height:  40px; width: 100px">
+            <option th:each="person : ${people}" th:value="${person.getId()}"
+                    th:text="${person.getName()}"></option>
+        </select>
+        <input class="btn btn-primary mx-5" type="submit" value="Set admin"/>
+    </form>
+</div>
+</body>
+</html>
